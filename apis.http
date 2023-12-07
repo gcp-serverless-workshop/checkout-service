@@ -3,3 +3,23 @@ GET http://localhost:8080/api/products
 
 ###
 GET http://localhost:8080/api/users
+
+###
+POST http://localhost:8080/api/checkout
+Content-Type: application/json
+Accept: application/json
+
+{
+  "userId": 1,
+  "products": [
+    {
+      "productId": 101,
+      "quantity": 1
+    },
+    {
+      "productId": 102,
+      "quantity": 2
+    }
+  ],
+  "notifyChannels": ["EMAIL", "SMS"]
+}

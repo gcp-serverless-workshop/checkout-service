@@ -1,4 +1,4 @@
-package io.kraftsman.gcp.data
+package io.kraftsman.gcp.models
 
 data class Product(
     val id: Int,

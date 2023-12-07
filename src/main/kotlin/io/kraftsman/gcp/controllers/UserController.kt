@@ -1,6 +1,6 @@
 package io.kraftsman.gcp.controllers
 
-import io.kraftsman.gcp.data.User
+import io.kraftsman.gcp.models.User
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
