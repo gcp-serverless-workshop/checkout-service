@@ -1,6 +1,6 @@
 package io.kraftsman.gcp.models
 
 data class ProductItem(
-    val productId: Int,
-    val quantity: Int
+    val product: Product,
+    val quantity: Int,
 )

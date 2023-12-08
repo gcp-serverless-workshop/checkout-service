@@ -1,4 +1,4 @@
-package io.kraftsman.gcp.dtos
+package io.kraftsman.gcp.dtos.responses
 
 data class CheckoutResponse(
     val result: Boolean,

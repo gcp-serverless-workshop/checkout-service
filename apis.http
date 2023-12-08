@@ -1,8 +1,8 @@
 ###
-GET http://localhost:8080/api/products
+GET http://localhost:8080/api/users
 
 ###
-GET http://localhost:8080/api/users
+GET http://localhost:8080/api/products
 
 ###
 POST http://localhost:8080/api/checkout
@@ -10,16 +10,16 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "userId": 1,
-  "products": [
+  "user_id": 1,
+  "cart": [
     {
-      "productId": 101,
+      "product_id": 1,
       "quantity": 1
     },
     {
-      "productId": 102,
-      "quantity": 2
+      "product_id": 2,
+      "quantity": 1
     }
   ],
-  "notifyChannels": ["EMAIL", "SMS"]
+  "notify_channels": ["LINE", "SMS"]
 }
