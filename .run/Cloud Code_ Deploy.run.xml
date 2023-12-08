@@ -1,0 +1,37 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Cloud Code: Deploy" type="CloudCodeCloudRunConfigurationType" factoryName="CloudCodeCloudDeployRunConfigurationFactory" show_console_on_std_err="false" show_console_on_std_out="false" gcpProject="{&quot;googleUsername&quot;:&quot;shengyoufan@gmail.com&quot;,&quot;projectId&quot;:&quot;gcp-serverless-workshop&quot;,&quot;projectName&quot;:&quot;gcp-serverless-workshop&quot;,&quot;projectNumber&quot;:1042206310582}" imageBuilder="{&quot;name&quot;:&quot;Docker&quot;,&quot;payload&quot;:{&quot;path&quot;:&quot;Dockerfile&quot;}}" gcbSettings="{}">
+    <option name="allowRunningInParallel" value="false" />
+    <option name="buildEnvironment" value="Google Cloud Build" />
+    <option name="buildpacksEnv">
+      <map />
+    </option>
+    <option name="cloudSqlConnections">
+      <list />
+    </option>
+    <option name="concurrency" value="80" />
+    <option name="cpuAllocated" value="1" />
+    <option name="dockerBuildArgs">
+      <map />
+    </option>
+    <option name="dockerTarget" value="" />
+    <option name="environmentVariables">
+      <map />
+    </option>
+    <option name="imagePath" value="asia-east1-docker.pkg.dev/gcp-serverless-workshop/ecommerce-platform/checkout-service" />
+    <option name="loadingAvailableBuilders" value="false" />
+    <option name="managedAuthentication" value="ALLOW_UNAUTHENTICATED" />
+    <option name="managedRegion" value="asia-east1" />
+    <option name="maxInstances" value="1000" />
+    <option name="memoryAllocated" value="MIB_512" />
+    <option name="platform" value="FULLY_MANAGED" />
+    <option name="projectPathOnTarget" />
+    <option name="selectedOptions">
+      <list />
+    </option>
+    <option name="serviceAccount" value="" />
+    <option name="serviceName" value="checkout-service" />
+    <option name="timeout" value="300" />
+    <option name="vpcConnector" value="" />
+    <method v="2" />
+  </configuration>
+</component>
