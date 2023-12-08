@@ -56,3 +56,7 @@ tasks.withType<Test> {
 tasks.bootBuildImage {
     builder.set("paketobuildpacks/builder-jammy-base:latest")
 }
+
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+    archiveFileName.set("app.jar")
+}
