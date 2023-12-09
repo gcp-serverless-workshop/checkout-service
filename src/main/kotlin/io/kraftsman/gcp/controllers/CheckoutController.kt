@@ -1,21 +1,26 @@
 package io.kraftsman.gcp.controllers
 
-import io.kraftsman.gcp.dtos.responses.CheckoutResponse
 import io.kraftsman.gcp.dtos.requests.CheckoutRequest
+import io.kraftsman.gcp.dtos.responses.CheckoutResponse
 import io.kraftsman.gcp.models.Order
-import io.kraftsman.gcp.models.Product
 import io.kraftsman.gcp.models.ProductItem
-import io.kraftsman.gcp.models.User
+import io.kraftsman.gcp.repositories.OrderRepository
+import io.kraftsman.gcp.repositories.ProductItemRepository
+import io.kraftsman.gcp.repositories.ProductRepository
+import io.kraftsman.gcp.repositories.UserRepository
 import io.kraftsman.gcp.services.OrderNotifierService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import kotlin.random.Random
 
 @RestController
 @RequestMapping("api")
 class CheckoutController(
+    private val userRepository: UserRepository,
+    private val productRepository: ProductRepository,
+    private val productItemRepository: ProductItemRepository,
+    private val orderRepository: OrderRepository,
     private val notifier: OrderNotifierService
 ) {
 
@@ -23,30 +28,20 @@ class CheckoutController(
     fun create(
         @RequestBody request: CheckoutRequest
     ): CheckoutResponse {
-        val order = Order(
-            1,
-            User(
-                id = 1,
-                username = "user$1",
-                password = "randompassword",
-                displayName = "User $1",
-                email = "user$1@example.com",
-                mobile = "0911111111",
-                profileImageUrl = "https://www.example.com",
-            ),
-            listOf (
-                ProductItem(
-                    Product(
-                        id = 1,
-                        name = "Product 1",
-                        description = "product desc",
-                        price = Random.nextInt(10, 1000),
-                        imageUrl = "https://www.example.com/product",
-                    ),
-                    1
-                )
+        val user = userRepository.findById(request.userId).get()
+        val order = orderRepository.save(Order(user = user))
+        val productItems = request.cart.map { cartItem ->
+            val productItem = ProductItem(
+                order = order,
+                product = productRepository.findById(cartItem.productId).get(),
+                quantity = cartItem.quantity
             )
-        )
+
+            productItemRepository.save(productItem)
+        }
+
+        order.items = productItems
+        orderRepository.save(order)
 
         request.notifyChannels.forEach { channel ->
             notifier.send(order, channel)

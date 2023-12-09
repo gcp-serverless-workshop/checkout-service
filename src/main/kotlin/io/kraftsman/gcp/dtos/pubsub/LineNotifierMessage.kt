@@ -5,7 +5,7 @@ import io.kraftsman.gcp.contracts.NotifierMessageContract
 
 data class LineNotifierMessage(
     @JsonProperty("order_id")
-    override val orderId: Int,
+    override val orderId: Long,
 
     @JsonProperty("name")
     override val message: String,

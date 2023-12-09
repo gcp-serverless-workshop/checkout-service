@@ -1,4 +1,7 @@
 ###
+GET http://localhost:8080/
+
+###
 GET http://localhost:8080/api/users
 
 ###
@@ -21,5 +24,8 @@ Accept: application/json
       "quantity": 1
     }
   ],
-  "notify_channels": ["LINE", "SMS"]
+  "notify_channels": ["LINE"]
 }
+
+###
+GET http://localhost:8080/api/orders

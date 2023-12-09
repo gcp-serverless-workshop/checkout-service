@@ -31,8 +31,6 @@ class OrderNotifierService(
         val topic = topics.getOrDefault(channel, null)
         val payload = objectMapper.writeValueAsString(message)
 
-        println(payload)
-
         if (topic != null) {
             pubSubTemplate.publish(topic, payload)
         }
@@ -41,19 +39,19 @@ class OrderNotifierService(
     private fun generateLineNotifierMessage(order: Order): LineNotifierMessage =
         LineNotifierMessage(
             order.id,
-            order.items.joinToString { "${it.product.name} x ${it.quantity}、" }
+            order.items.joinToString { "${it.product.name} x ${it.quantity}" }
         )
 
     private fun generateSmsNotifierMessage(order: Order): SmsNotifierMessage =
         SmsNotifierMessage(
             order.id,
-            order.items.joinToString { "${it.product.name} x ${it.quantity}、" }
+            order.items.joinToString { "${it.product.name} x ${it.quantity}" }
         )
 
     private fun generateEmailNotifierMessage(order: Order): EmailNotifierMessage =
         EmailNotifierMessage(
             order.id,
-            order.items.joinToString { "${it.product.name} x ${it.quantity}、" },
+            order.items.joinToString { "${it.product.name} x ${it.quantity}" },
             order.user.email
         )
 }

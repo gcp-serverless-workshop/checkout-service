@@ -7,7 +7,7 @@ import io.kraftsman.gcp.models.CartItem
 data class CheckoutRequest(
 
     @JsonProperty("user_id")
-    val userId: Int,
+    val userId: Long,
 
     @JsonProperty("cart")
     val cart: List<CartItem>,
